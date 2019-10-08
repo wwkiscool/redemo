@@ -1,0 +1,12 @@
+.wrapper {
+  
+}
+.background {
+  background: url('../assets/login/first-back.png') no-repeat;
+  background-size: 100% auto;
+}
+.background:before {
+  content:'';
+  display: block;
+  padding-top:70%;
+}
