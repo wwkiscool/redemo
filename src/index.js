@@ -1,11 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-// import Clock from './pages/me/clock'
+// import App from './App';
+// import { Input, Select,Reservation} from './pages/me/formdemo'
+import Message from './pages/me/message.jsx'
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+// ReactDOM.render(<Input />, document.getElementById('root'));
+ReactDOM.render(<Message />, document.getElementById('root'));
 
 
 
