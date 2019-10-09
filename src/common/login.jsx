@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 
 import './login.css'
-import {Input, Button} from 'antd';
+import imgUrl from '../assets/login/first-welcome.png'
+import userUrl from '../assets/login/first-persen.png'
+import passwordUrl from '../assets/login/first-lock.png'
+import {Input} from 'antd';
 // 登录
 class login extends Component {
   constructor(){
@@ -21,12 +24,20 @@ class login extends Component {
   render() {
     return (
       <div className='wrapper'>
-        <div className='background'></div>
-        <div>
-          <Input placeholder='请输入用户名' value={this.state.userId} />
-          <Input placeholder='请输入密码' value={this.state.password} />
+        <div className='background'>
+          <img src={imgUrl} alt />
         </div>
-        <div>
+        <div className='flexbox'>
+          <div className='firstinput'>
+            <Input placeholder='请输入用户名' value={this.state.userId} />
+            <img src={userUrl} />
+          </div>
+          <div className='secondinput'>
+            <Input placeholder='请输入密码' value={this.state.password} />
+            <img src={passwordUrl} />
+          </div>
+        </div>
+        <div className='btnBox'>
           <button onClick={this.Submit}>确定</button>
         </div>
       </div>

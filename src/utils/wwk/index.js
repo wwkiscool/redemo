@@ -164,3 +164,5 @@ wwk.getParams = function (url) {
   }
   return data;
 };
+
+export default wwk

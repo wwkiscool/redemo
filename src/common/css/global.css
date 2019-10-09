@@ -1,0 +1,8 @@
+button:focus{
+  outline:0;
+}
+input:focus{
+  border: 1px solid #19c9b4;
+  outline-offset: 0;
+  outline: 0ex;
+}
