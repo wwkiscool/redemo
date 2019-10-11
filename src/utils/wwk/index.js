@@ -57,7 +57,9 @@ const ClientChecker = {
       result = {};
       result.OS = match[1] === 'IOS' ? this.iOS : this.Android;
       result.type = this.WebApp;
-      result.version = match[2];
+      // result.version = match[2]; 
+      // 获取到的UA是1.0 由于手机是13.0所以先调试 头部padding
+      result.version = '13'
     }
 
     return result;
