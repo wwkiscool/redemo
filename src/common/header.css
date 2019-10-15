@@ -1,0 +1,20 @@
+.header {
+  height: 50px;
+  line-height:50px;
+  position: relative;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+  width:100%;
+}
+.header-title{
+  font-size: 20px;
+}
+.header-image {
+  position: absolute;
+  width:30px;
+  height:30px;
+  left:5px;
+  top: 10px;
+}

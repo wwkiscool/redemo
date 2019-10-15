@@ -1,24 +1,24 @@
-.wrapper {
-  
+.login-wrapper {
+  height:100%;
 }
-.background {
+.login-background {
   background: url('../assets/login/first-back.png') no-repeat;
   background-size: 100% auto;
   position: relative;
 }
-.background img {
+.login-background img {
   position: absolute;
   left: 20px;
-  top: 10px;
+  top: 50px;
   width: 120px;
   height: 20px;
 }
-.background:before {
+.login-background:before {
   content:'';
   display: block;
   padding-top:70%;
 }
-.flexbox{
+.login-flexbox{
   display: flex;
   flex-flow: column;
   justify-content: center;
@@ -26,28 +26,28 @@
   box-sizing: border-box;
   padding: 0 40px 40px 40px;
 }
-.firstinput {
+.login-firstinput {
   width:100%;
   padding-bottom:20px;
   position: relative;
 }
-.firstinput img {
+.login-firstinput img {
   position: absolute;
   width:15px;
   height: 15px;
   left: 8px;
-  top: 13px;
+  top: 8px;
 }
-.secondinput {
+.login-secondinput {
   width:100%;
   position: relative;
 }
-.secondinput img {
+.login-secondinput img {
   position: absolute;
   width:15px;
   height: 15px;
   left: 8px;
-  top: 13px;
+  top: 8px;
 }
 input {
   width:100%;
@@ -59,11 +59,12 @@ input {
   /* padding-left:30px; */
 }
 
-.btnBox {
+.login-btnBox {
   height: 40px;
   text-align: center;
+  font-size: 20px;
 }
-.btnBox button {
+.login-btnBox button {
   width :200px;
   height:40px;
   line-height: 40px;
@@ -71,4 +72,35 @@ input {
   color: #fff;
   border: none;
   border-radius: 20px;
+}
+.login-bottomBox {
+  width:100%;
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  bottom: 100px;
+  position: fixed;
+  margin: 0 auto;
+}
+.login-bottomBox i {
+  width:1px;
+  height: 15px;
+  background: lightgrey;
+}
+.login-register {
+  padding-right: 20px;
+  text-decoration: underline;
+}
+.login-abort {
+  padding-left: 20px;
+  text-decoration: underline;
+}
+.login-me {
+  width: 100%;
+  position:fixed;
+  bottom: 60px;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 1.5px;
 }

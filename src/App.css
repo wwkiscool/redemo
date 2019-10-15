@@ -3,7 +3,7 @@
   
 
 /* 对于不支持safe区域的版本 增加padding-top */
-  .ios-unsupport-safe .main-viewport {
+  /* .ios-unsupport-safe .main-viewport {
     padding-top: 130px;
   }
   .ios-support-safe .main-viewport {
@@ -11,4 +11,4 @@
   }
   .general-device .main-viewport {
     padding-top: 90px;
-  }
+  } */

@@ -3,6 +3,7 @@ import RouterIndex from './router/index' // 引入路由文件
 
 import './App.css'
 import wwk from './utils/wwk'
+
 class App extends React.Component {
   constructor(){
     super();
@@ -10,8 +11,9 @@ class App extends React.Component {
       device: ''
     }
   }
-  componentWillMount () {
+  componentDidMount () {
     // 渲染前
+    // 不能在里面执行this.setState，会有改变组件状态的副作用
     console.log('1', window)
     // 如果时ios 并且版本大于11增加一个class
     if (wwk.isIOSApp()) {
@@ -33,7 +35,9 @@ class App extends React.Component {
   render() {
     return (
       <div className={this.state.device}>
-        <RouterIndex className='main-viewport'></RouterIndex>
+        <div>
+          <RouterIndex className='main-viewport'></RouterIndex>
+        </div>
       </div>
     )
   }
