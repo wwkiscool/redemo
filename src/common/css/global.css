@@ -13,3 +13,17 @@ html,body{
   padding: 0;
   line-height: normal;
 }
+.ant-modal-header {
+  text-align: center;
+}
+.ant-modal-footer {
+  text-align:center !important;
+}
+
+.ant-modal-footer button{
+  width: 90%;
+  border: none;
+  background: yellow;
+  border-radius: 10px;
+  height: 30px;
+}

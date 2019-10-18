@@ -5,12 +5,19 @@ import './login.css'
 import imgUrl from '../assets/login/first-welcome.png'
 import userUrl from '../assets/login/first-persen.png'
 import passwordUrl from '../assets/login/first-lock.png'
+import backUrl from '../assets/login/first-back.png'
 import {Input, Modal} from 'antd';
+
+import { createBrowserHistory } from 'history'; // 如果是history路由
+import { createHashHistory } from 'history'; // 如果是hash路由
 // import axios from '../utils/axiosUtils'
 import axios from 'axios'
 
 import wwk from '../utils/wwk'
 // 登录
+
+const history = createBrowserHistory();
+const hash = createHashHistory()
 class login extends Component {
   constructor(){
     super();
@@ -32,6 +39,11 @@ class login extends Component {
         password: this.state.password
       })
       console.log('1', response)
+      let code = response.data.code;
+      if (code === '200') {
+        history.push('/me/calendar');
+        hash.push('/me/calendar')
+      }
     }
   }
   showModal = (val) => {
@@ -66,35 +78,42 @@ class login extends Component {
   }
   render() {
     return (
-      <div className='login-wrapper'>
-        <div className='login-background'>
-          <img src={imgUrl} alt='1' />
+      <div className='login-wrapper' style={loginStyle.wrapper}>
+        <div className='login-background' style={loginStyle.bac}>
+          <img src={imgUrl} alt='1' style={loginStyle.bacimg} />
         </div>
-        <div className='login-flexbox'>
-          <div className='login-firstinput'>
+        <div className='login-flexbox' style={loginStyle.flexbox}>
+          <div className='login-firstinput' style={loginStyle.firstinput}>
             <Input placeholder='请输入用户名' onChange={this.firstInput} type='text' />
-            <img src={userUrl} alt='2' />
+            <img src={userUrl} alt='2' style={loginStyle.firstinputImg} />
           </div>
-          <div className='login-secondinput'>
+          <div className='login-secondinput' style={loginStyle.secondInput}>
             <Input.Password placeholder='请输入密码' onChange={this.secondInput} type='text' />
-            <img src={passwordUrl} alt='3' />
+            <img src={passwordUrl} alt='3'style={loginStyle.secondinputImg} />
           </div>
         </div>
-        <div className='login-btnBox'>
-          <button onClick={this.Submit}>确定</button>
+        <div className='login-btnBox' style={loginStyle.btnBox}>
+          <button onClick={this.Submit} style={loginStyle.submitBtn}>确 定</button>
         </div>
-        <div className='login-bottomBox'>
+        <div className='login-bottomBox' style={loginStyle.bottomBox}>
           {/* <div className='register'>用户注册</div> */}
-          <Link to={`/register`} activeClassName="login-current">用户注册</Link>
+          <Link to={`/register`} className="login-current">用户注册</Link>
           <i></i>
-          <div className='login-abort'>关于我们</div>
+          <div className='login-abort' style={loginStyle.abort}>关于我们</div>
         </div>
-        <div className='login-me'>欢迎进入ihy's world</div>
+        <div className='login-me' style={loginStyle.me}>欢迎进入ihy's world</div>
         <Modal
           title='提示'
           visible={this.state.visible}
-          onOk={this.handleOk}
-          onCancel={this.handleCancel}
+          bodyStyle={bodyStyle}
+          // okText='确认'
+          centered={true}
+          closable={false}
+          width='70%'
+          destroyOnClose={true}
+          footer={[
+            <button key="submit" type="primary" onClick={this.handleOk}>确认</button>
+          ]}
         >
           {this.state.message}
         </Modal>
@@ -103,4 +122,96 @@ class login extends Component {
   }
 }
 
-export default login;
+const loginStyle = {
+  wrapper:{height: '100%'},
+  bac: {
+    background:`url('${backUrl}') no-repeat`,
+    backgroundSize: 'cover',
+    position: 'relative',
+    height: '300px'
+    // ':before': {
+    //   content:'',
+    //   display: 'block',
+    //   paddingTop:'70%'
+    // }
+  },
+  bacimg:{
+    position: 'absolute',
+    left: '20px',
+    top: '50px',
+    width: '120px',
+    height: '20px'
+  },
+  flexbox: {
+    display: 'flex',
+    flexFlow: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    boxSizing: 'border-box',
+    padding: '0 40px 40px 40px'
+  },
+  firstinput: {
+    width:'100%',
+  paddingBottom:'20px',
+  position: 'relative'
+  },
+  firstinputImg: {
+    position: 'absolute',
+  width:'15px',
+  height: '15px',
+  left: '8px',
+  top:' 8px'
+  },
+  secondInput: {
+    width:'100%',
+  position: 'relative'
+  },
+  secondinputImg: {
+    position: 'absolute',
+    width:'15px',
+    height: '15px',
+    left: '8px',
+    top: '8px'
+  },
+  btnBox:{
+    height: '40px',
+  textAlign: 'center',
+  fontSize: '20px'
+  },
+  submitBtn: {
+    width :'200px',
+  height:'40px',
+  lineHeight: '40px',
+  background: '#19c9b4',
+  color: '#fff',
+  border: 'none',
+  borderRadius: '20px'
+  },
+  bottomBox: {
+    width:'100%',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems:'center',
+  bottom: '100px',
+  position: 'fixed',
+  margin: '0 auto',
+  },
+  abort: {
+    paddingLeft: '20px',
+  textDecoration: 'underline'
+  },
+  me: {
+    width: '100%',
+  position:'fixed',
+  bottom: '60px',
+  display:'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  letterSpacing: '1.5px',
+  }
+}
+const bodyStyle = {
+  // 弹出框的样式
+    textAlign:'center'
+}
+export default login
