@@ -27,3 +27,23 @@ html,body{
   border-radius: 10px;
   height: 30px;
 }
+
+/* 伪元素1px
+.row-cell:before {
+  content: " ";
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  height: 1px;
+  border-top: 1px solid #e5e5e5;
+  color: #e5e5e5;
+  transform-origin: 0 0;
+  transform: scaleY(0.5);
+  z-index: 2;
+} */
+
+/*兼容ios不显示图片问题*/
+/* img {
+  content: normal !important
+} */

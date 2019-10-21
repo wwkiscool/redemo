@@ -1,6 +1,6 @@
 .header {
-  height: 50px;
-  line-height:50px;
+  height: 90px;
+  line-height:90px;
   position: relative;
   display:flex;
   justify-content: center;
@@ -9,12 +9,12 @@
   width:100%;
 }
 .header-title{
-  font-size: 20px;
+  font-size: 1.2em;
 }
 .header-image {
   position: absolute;
-  width:30px;
-  height:30px;
+  width:40px;
+  height:40px;
   left:5px;
-  top: 10px;
+  top: 25px;
 }

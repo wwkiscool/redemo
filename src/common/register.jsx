@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 
 import Header from './header'
-import { createBrowserHistory } from 'history'; // 如果是history路由
-import { createHashHistory } from 'history'; // 如果是hash路由
-import {Input,Button,Modal} from 'antd'
-import axios from 'axios';
+// import { createBrowserHistory } from 'history'; // 如果是history路由
+// import { createHashHistory } from 'history'; // 如果是hash路由
+import {InputItem,Button,Modal} from 'antd-mobile'
+// import axios from 'axios';
+import axios from '../utils/axiosUtils'
 
-const history = createBrowserHistory();
-const hash = createHashHistory()
+// const history = createBrowserHistory();
+// const hash = createHashHistory()
 class register extends Component {
   constructor(){
     super();
@@ -19,8 +20,9 @@ class register extends Component {
   }
   goBack = () => {
     // alert(1)
-    history.push('/');
-    hash.push('/')
+    // history.push('/');
+    // hash.push('/')
+    this.props.history.push("/");
   }
   getUserid = (e) =>{
     this.setState({
@@ -33,8 +35,9 @@ class register extends Component {
     })
   }
   handleOk = () => {
-    history.push('/');
-    hash.push('/')
+    // history.push('/');
+    // hash.push('/')
+    this.props.history.push("/");
   }
   handleCancel = () => {
 
@@ -62,10 +65,10 @@ class register extends Component {
       <div className='register'>
         <Header title='ish register' goBack={this.goBack.bind(this)}></Header>
         <div style={registerStyle.firstInput}>
-          <Input placeholder='请输入用户名' type='text' onChange={this.getUserid}></Input>
+          <InputItem placeholder='请输入用户名' type='text' onChange={this.getUserid}></InputItem>
         </div>
         <div style={registerStyle.secondInput}>
-          <Input.Password placeholder='请输入密码' type='text' onChange={this.getPassword}></Input.Password>
+          <InputItem placeholder='请输入密码' type='password' onChange={this.getPassword}></InputItem>
         </div>
         {/* <div>
           <Input></Input>

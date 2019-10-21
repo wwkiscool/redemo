@@ -6,18 +6,18 @@ import imgUrl from '../assets/login/first-welcome.png'
 import userUrl from '../assets/login/first-persen.png'
 import passwordUrl from '../assets/login/first-lock.png'
 import backUrl from '../assets/login/first-back.png'
-import {Input, Modal} from 'antd';
+import {InputItem, Modal} from 'antd-mobile';
 
-import { createBrowserHistory } from 'history'; // 如果是history路由
-import { createHashHistory } from 'history'; // 如果是hash路由
-// import axios from '../utils/axiosUtils'
-import axios from 'axios'
+// import { createBrowserHistory } from 'history'; // 如果是history路由
+// import { createHashHistory } from 'history'; // 如果是hash路由
+import axios from '../utils/axiosUtils'
+// import axios from 'axios'
 
 import wwk from '../utils/wwk'
 // 登录
 
-const history = createBrowserHistory();
-const hash = createHashHistory()
+// const history = createBrowserHistory();
+// const hash = createHashHistory()
 class login extends Component {
   constructor(){
     super();
@@ -41,8 +41,9 @@ class login extends Component {
       console.log('1', response)
       let code = response.data.code;
       if (code === '200') {
-        history.push('/me/calendar');
-        hash.push('/me/calendar')
+        // history.push('/me/calendar');
+        // hash.push('/me/calendar')
+        this.props.history.push("/me/calendar");
       }
     }
   }
@@ -84,11 +85,11 @@ class login extends Component {
         </div>
         <div className='login-flexbox' style={loginStyle.flexbox}>
           <div className='login-firstinput' style={loginStyle.firstinput}>
-            <Input placeholder='请输入用户名' onChange={this.firstInput} type='text' />
+            <InputItem placeholder='请输入用户名' onChange={this.firstInput} type='text' />
             <img src={userUrl} alt='2' style={loginStyle.firstinputImg} />
           </div>
           <div className='login-secondinput' style={loginStyle.secondInput}>
-            <Input.Password placeholder='请输入密码' onChange={this.secondInput} type='text' />
+            <InputItem placeholder='请输入密码' onChange={this.secondInput} type='password' />
             <img src={passwordUrl} alt='3'style={loginStyle.secondinputImg} />
           </div>
         </div>
