@@ -3,7 +3,7 @@ import React from 'react';
 import {BrowserRouter as Router, Route} from 'react-router-dom'
 import Login from '../common/login.jsx'
 import Register from '../common/register.jsx'
-import Calendar from '../pages/me/calendar/index.jsx'
+import Calendar from '../pages/me/calendar/calendar.jsx'
 
 class RouterIndex extends React.Component {
   render() {

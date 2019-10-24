@@ -92,13 +92,15 @@ class register extends Component {
 const registerStyle = {
   firstInput: {
     marginTop:'20px',
+    boxSizing: 'border-box',
     width: '100%',
     padding: '0 10%'
   },
   secondInput: {
     marginTop:'10px',
     width:'100%',
-    padding: '0 10%'
+    padding: '0 10%',
+    boxSizing: 'border-box',
   },
   btn: {
     width: '60%',

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import backUrl from '../assets/common/back.png'
 
 
-import './header.css'
+import styles from './header.module.css'
 class Header extends Component {
   constructor(props){
     super(props);
@@ -22,9 +22,9 @@ class Header extends Component {
   }
   render() {
     return(
-      <div className='header'>
-        <div className='header-title'>{this.props.title}</div>
-        <img src={backUrl} className='header-image' alt='1' onClick={this.children.bind(this)} />
+      <div className={styles.header}>
+        <div className={styles.headerTitle}>{this.props.title}</div>
+        <img src={backUrl} className={styles.headerImage} alt='1' onClick={this.children.bind(this)} />
         <div style={{display:this.props.message?'block':'none'}}>{this.props.message}</div>
       </div>
     )

@@ -8,10 +8,10 @@
   background: #fff;
   width:100%;
 }
-.header-title{
+.headerTitle{
   font-size: 1.2em;
 }
-.header-image {
+.headerImage {
   position: absolute;
   width:40px;
   height:40px;

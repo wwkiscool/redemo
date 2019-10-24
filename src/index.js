@@ -3,13 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import './common/css/global.css'
 import App from './App';
-import 'antd/dist/antd.css';
+import 'antd-mobile/dist/antd-mobile.css';
 import * as serviceWorker from './serviceWorker';
 
-import('vconsole').then(vconsole => {
-  // eslint-disable-next-line new-cap,no-new
-  new vconsole.default();
-})
+// import('vconsole').then(vconsole => {
+//   // eslint-disable-next-line new-cap,no-new
+//   new vconsole.default();
+// })
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
