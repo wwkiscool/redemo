@@ -52,30 +52,52 @@
   text-align: center;
   padding: 25px 0;
   box-sizing: border-box;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .everyDate {
   color: #333333;
   width: 14%;
-  float: left;
-  padding: 20px 0px;
+  /* float: left; */
+  /* padding: 20px 0px; */
   box-sizing: border-box;
   font-size: 28px;
   text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 }
-.circle {
+.disabled .circle {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  box-sizing: border-box;
+  padding: 9px;
+  position: relative;
+  text-align: center;
+  background: #d3d3d3a1;
+  color: white;
+}
+.dateDay {
+  background: #fff;
+  overflow: hidden;
+  padding: 0 1%;
+      box-sizing: border-box;
+}
+.empty {
+
+}
+.on .circle{
+  background: #00C3AC;
+  box-shadow: 0 0 11px 0 #5AD1C3;
+  color: #fff;
   border-radius: 100%;
   width: 56px;
   height: 56px;
   box-sizing: border-box;
   padding: 9px;
   position: relative;
-  background: lightgrey;
-  color: white;
-}
-.dateDay {
-  background: #fff;
-  overflow: hidden;
 }

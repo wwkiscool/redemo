@@ -5,28 +5,47 @@ import Header from '../../../common/header.jsx'
 import styles from './calendar.module.css'
 import leftUrl from '../../../assets/me/left.png';
 import rightUrl from '../../../assets/me/right.png';
+import moment from 'moment';
+
+
 class calendar extends Component {
   constructor() {
     super();
     this.state = {
-      datetop:'2019-10',
+      datetop:'',
       year: '',
       month: '',
       day: '',
       datelist: [],
-      style: styles
+      style: styles,
+      date: new Date()
     }
   }
-  componentWillMount () {
+  componentDidMount () {
     this.initData();
+    this.timer = setInterval(()=> this.tick(), 1000)
   }
+  componentWillUnmount () {
+    clearInterval(this.timer)
+  }
+  tick = () => {
+    this.setState({
+      date: new Date()
+    })
+  }
+  zeroFill = (num) => {
+    num = Number(num);
+    num = num < 10 ? '0' + num : num;
+    return num;
+  }
+  
   initData = () => {
     let year  = new Date().getFullYear();
     let month = new Date().getMonth() + 1;
-    let day = new Date().getDate();
+    // let day = new Date().getDate();
     let datetop = year + '年' + month + '月'
     let totalNum = this.dayInMonth(year,month);
-    console.log('1',totalNum,'2',month)
+    
     let datelist = [];
 
     // 获取某月的1号是星期几
@@ -36,29 +55,43 @@ class calendar extends Component {
     console.log('从第几天开始',week)
     for(let i = 1; i <= totalNum + week; i++ ) {
       if (i > week) {
+        let one = [];
+        one.push(year);
+        one.push(this.zeroFill(month));
+        one.push(this.zeroFill(i - week));
+        let now = moment(Date.now()).format('YYYY-MM-DD');
+        let className = ''
+        if (
+          one[0] === new Date(now).getFullYear() &&
+          one[1] === new Date(now).getMonth() + 1 &&
+          one[2] === new Date(now).getDate()
+        ) {
+          className += 'on'
+        }
         let obj = {
           num: i - week,
-          name: 'circle'
+          name: 'circle',
+          circle: true,
+          className: className
         }
         datelist.push(obj)
       } else {
         let obj = {
           num: '',
-          name: 'empty'
+          name: 'empty',
+          circle:false,
+          className: 'disabled'
         }
         datelist.push(obj)
       }
     }
     this.setState({
-      year: year,
-      month: month,
-      day: day,
-      datetop:datetop,
+      datetop: datetop,
       datelist: datelist
     })
   }
   goBack = () => {
-    console.log('1',styles)
+    
   }
   // 获取上个月一共有多少天
   prevDay = () => {
@@ -108,16 +141,21 @@ class calendar extends Component {
             </div>
             <div className={styles.dateDay}>
               {
-                this.state.datelist.map(item => 
-                  <div className={this.state.style.everyDay} key={item.num}>
-                    <div className={item.name}>{item.num}</div>
+                this.state.datelist.map((item, index) => 
+                <div key={index} className={`${item.className?this.state.style.on:this.state.style.disabled}`}>
+                  <div  className={this.state.style.everyDay}>
+                    <div className={`${item.circle?this.state.style.circle: ''}`}>{item.num}</div>
                   </div>
+                </div>
                 )
               }
             </div>
+            <div>{this.state.date.toLocaleTimeString()}</div>
+              
+            
           </div>
         </div>
     );
   }
 }
-export default calendar;
+export default calendar
