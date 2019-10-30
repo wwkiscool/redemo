@@ -18,7 +18,8 @@ class calendar extends Component {
       day: '',
       datelist: [],
       style: styles,
-      date: new Date()
+      date: new Date(),
+      heart:`❤`
     }
   }
   componentDidMount () {
@@ -39,10 +40,10 @@ class calendar extends Component {
     return num;
   }
   
-  initData = () => {
-    let year  = new Date().getFullYear();
-    let month = new Date().getMonth() + 1;
-    // let day = new Date().getDate();
+  initData = (val) => {
+    let year  =this.state.year || new Date().getFullYear();
+    let month = this.state.month || new Date().getMonth() + 1;
+    let day = this.state.day || new Date().getDate();
     let datetop = year + '年' + month + '月'
     let totalNum = this.dayInMonth(year,month);
     
@@ -50,7 +51,13 @@ class calendar extends Component {
 
     // 获取某月的1号是星期几
     // let dayShow = new Date(year, month, 1).getDay();
-    let theday = new Date().setDate(1);
+    let theday = ''
+    if (val) {
+      theday = new Date(val).setDate(1);
+    } else {
+      theday = new Date().setDate(1);
+    }
+    
     let week = new Date(theday).getDay();
     console.log('从第几天开始',week)
     for(let i = 1; i <= totalNum + week; i++ ) {
@@ -86,12 +93,15 @@ class calendar extends Component {
       }
     }
     this.setState({
+      year: year,
+      month:month,
+      day:day,
       datetop: datetop,
       datelist: datelist
     })
   }
   goBack = () => {
-    
+    this.props.history.push("/");
   }
   // 获取上个月一共有多少天
   prevDay = () => {
@@ -109,8 +119,42 @@ class calendar extends Component {
     let Day = new Date(year,month+1,0).getDate();
     return Day;
   }
+  prevMonth = () => {
+    // 上个月的日期
+    console.log(this.state)
+    let month = this.state.month - 1 === 0 ? 12 : this.state.month - 1 
+    let year = this.state.month - 1 === 0 ? this.state.year - 1 :this.state.year;
+    console.log("1", month, '2', year);
+    this.setState({
+      year: year,
+      month: month,
+      // datetop: year + '年' + month + '月' 
+    },()=>{
+      let val = year+ '-' + month +'-'+ "1"
+    console.log('2', val)
+    console.log('3', this.state)
+    this.initData(val);
+    });
+    
+  }
+  nextMonth = () => {
+    // 下个月的日期console.log(this.state)
+    let month = this.state.month === 12 ? 1 : this.state.month + 1 
+    let year = this.state.month + 1 === 12 ? this.state.year + 1 :this.state.year;
+    console.log("1", month, '2', year);
+    this.setState({
+      year: year,
+      month: month,
+      datetop: year + '年' + month + '月'
+    },()=>{
+      let val = year+ '-' + month +'-'+ "1"
+    console.log('2', val)
+    console.log('3', this.state)
+    this.initData(val);
+    })
+  }
   // 日历
-  dayInMonth = (month, year) => {
+  dayInMonth = (year, month) => {
     // 某月的第0天就是上一个月的总天数
     return new Date(year, month, 0).getDate()
   }
@@ -118,14 +162,16 @@ class calendar extends Component {
     return (
       <div>
         <Header title='日历' goBack={this.goBack.bind(this)}></Header>
+        
           <div className={styles.Mcalendar}>
+          <div className={styles.time}>{ this.state.heart + ' ' + this.state.date.toLocaleTimeString() + ' ' + this.state.heart}</div>
             <div className={styles.datemain}>
               <div className={styles.dateTop}>
-                <div className={styles.dateimgA}>
+                <div className={styles.dateimgA} onClick={this.prevMonth}>
                   <img src={leftUrl} alt="left" className={styles.imgA} />
                 </div>
                 <p className={styles.thep}>{this.state.datetop}</p>
-                <div className={styles.dateimgB}>
+                <div className={styles.dateimgB} onClick={this.nextMonth}>
                   <img src={rightUrl} alt="right"  className={styles.imgB} />
                 </div>
               </div>
@@ -150,7 +196,8 @@ class calendar extends Component {
                 )
               }
             </div>
-            <div>{this.state.date.toLocaleTimeString()}</div>
+            
+            {/* <div>{this.state.heart}</div> */}
               
             
           </div>

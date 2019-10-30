@@ -11,15 +11,15 @@
   background: #fff;
 }
 .dateimgA {
-  width: 29.5px;
-  height: 25px;
-  line-height: 25px;
+  width: 32px;
+  height: 28px;
+  line-height: 28px;
   margin-right: 50px;
 }
 .dateimgB {
-  width: 29.5px;
-  height: 25px;
-  line-height: 25px;
+  width: 32px;
+  height: 28px;
+  line-height: 28px;
   margin-left: 50px;
 }
 .imgA {
@@ -100,4 +100,13 @@
   box-sizing: border-box;
   padding: 9px;
   position: relative;
+}
+.time {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  color: #00C3AC;
+  
+  background: #fff;
 }
