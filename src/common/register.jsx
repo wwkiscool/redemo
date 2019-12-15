@@ -3,16 +3,16 @@ import React, { Component } from 'react';
 import Header from './header'
 // import { createBrowserHistory } from 'history'; // 如果是history路由
 // import { createHashHistory } from 'history'; // 如果是hash路由
-import {InputItem,Button,Modal} from 'antd-mobile'
+import { InputItem, Button, Modal } from 'antd-mobile'
 // import axios from 'axios';
 import axios from '../utils/axiosUtils'
 
 // const history = createBrowserHistory();
 // const hash = createHashHistory()
 class register extends Component {
-  constructor(){
+  constructor() {
     super();
-    this.state= {
+    this.state = {
       userCode: '',
       password: '',
       visible: false
@@ -24,14 +24,15 @@ class register extends Component {
     // hash.push('/')
     this.props.history.push("/");
   }
-  getUserid = (e) =>{
+  getUserid = (e) => {
+    console.log(e)
     this.setState({
-      userCode: e.target.value
+      userCode: e
     })
   }
   getPassword = (e) => {
     this.setState({
-      password:e.target.value
+      password: e
     })
   }
   handleOk = () => {
@@ -44,20 +45,20 @@ class register extends Component {
   }
   register = async () => {
     try {
-      let response = await axios.post('/api/users/register',{
+      let response = await axios.post('/api/users/register', {
         userCode: this.state.userCode,
         password: this.state.password
       })
       let code = response.data.code;
-      console.log('1',response)
+      console.log('1', response)
       if (code === '200') {
         this.setState({
-          visible:true,
-          message:'注册成功,恭喜你可以开始了 gogo'
+          visible: true,
+          message: '注册成功,恭喜你可以开始了 gogo'
         })
       }
     } catch (error) {
-      
+
     }
   }
   render() {
@@ -88,28 +89,28 @@ class register extends Component {
       </div>
     );
   }
-} 
+}
 const registerStyle = {
   firstInput: {
-    marginTop:'20px',
+    marginTop: '20px',
     boxSizing: 'border-box',
     width: '100%',
     padding: '0 10%'
   },
   secondInput: {
-    marginTop:'10px',
-    width:'100%',
+    marginTop: '10px',
+    width: '100%',
     padding: '0 10%',
     boxSizing: 'border-box',
   },
   btn: {
     width: '60%',
-    margin:'10px auto',
-    
+    margin: '10px auto',
+
   },
   thebtn: {
-    background:'red',
-    width:'100%',
+    background: 'red',
+    width: '100%',
     color: 'white'
   }
 }
