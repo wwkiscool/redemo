@@ -15,7 +15,8 @@ class register extends Component {
     this.state = {
       userCode: '',
       password: '',
-      visible: false
+      visible: false,
+      riskCodeDup:false
     }
   }
   goBack = () => {
@@ -38,7 +39,14 @@ class register extends Component {
   handleOk = () => {
     // history.push('/');
     // hash.push('/')
-    this.props.history.push("/");
+    if (!this.state.riskCodeDup){
+      this.props.history.push("/");
+    } else {
+      this.setState({
+        visible: false
+      })
+    }
+    
   }
   handleCancel = () => {
 
@@ -47,7 +55,7 @@ class register extends Component {
     try {
       let response = await axios.post('/api/users/register', {
         userCode: this.state.userCode,
-        password: this.state.password
+        passWord: this.state.password
       })
       let code = response.data.code;
       console.log('1', response)
@@ -56,6 +64,14 @@ class register extends Component {
           visible: true,
           message: '注册成功,恭喜你可以开始了 gogo'
         })
+      } else {
+        if (response.data.err.sqlState == '23000'){
+          this.setState({
+            visible: true,
+            riskCodeDup:true,
+            message: '该账号已经存在，如果忘记密码请修改密码'
+          })
+        }
       }
     } catch (error) {
 
@@ -81,10 +97,11 @@ class register extends Component {
         <Modal
           title='提示'
           visible={this.state.visible}
-          onOk={this.handleOk}
-          onCancel={this.handleCancel}
+          transparent
+          footer={[{ text: 'Ok', onPress: () => { console.log('ok'); this.handleOk(); } }]}
+          // onCancel={this.handleCancel}
         >
-          {this.state.message}
+          <div>{this.state.message}</div>
         </Modal>
       </div>
     );

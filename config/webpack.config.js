@@ -343,6 +343,7 @@ module.exports = function (webpackEnv) {
         // please link the files into your node_modules/ and let module-resolution kick in.
         // Make sure your source files are compiled, as they will not be processed in any way.
         new ModuleScopePlugin(paths.appSrc, [paths.appPackageJson]),
+        
       ],
     },
     resolveLoader: {
@@ -416,6 +417,7 @@ module.exports = function (webpackEnv) {
                       },
                     },
                   ],
+                  ["import", { libraryName: "antd-mobile", style: "css" }] // `style: true` 会加载 less 文件
                 ],
                 // This is a feature of `babel-loader` for webpack (not Babel itself).
                 // It enables caching results in ./node_modules/.cache/babel-loader/
@@ -451,6 +453,9 @@ module.exports = function (webpackEnv) {
                 // debugger to show the original code. Instead, the code
                 // being evaluated would be much more helpful.
                 sourceMaps: false,
+                "plugins": [
+                  ["import", { libraryName: "antd-mobile", style: "css" }] // `style: true` 会加载 less 文件
+                ]
               },
             },
             // "postcss" loader applies autoprefixer to our CSS.

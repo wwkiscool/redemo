@@ -46,6 +46,14 @@ class calendar extends Component {
     let day = this.state.day || new Date().getDate();
     let datetop = year + '年' + month + '月'
     let totalNum = this.dayInMonth(year,month);
+    if(month == 2){
+      if(year % 100 ===0 || year % 400 === 0 || year % 4 === 0){
+        day = 29
+      } else {
+        day = 29
+      }
+    }
+    let dateTemp = new Date(`${year}-${month}-${day}`).getTime()
     
     let datelist = [];
 
@@ -66,12 +74,12 @@ class calendar extends Component {
         one.push(year);
         one.push(this.zeroFill(month));
         one.push(this.zeroFill(i - week));
-        let now = moment(Date.now()).format('YYYY-MM-DD');
+        let now = moment(dateTemp).format('YYYY-MM-DD');
         let className = ''
         if (
-          one[0] === new Date(now).getFullYear() &&
-          one[1] === new Date(now).getMonth() + 1 &&
-          one[2] === new Date(now).getDate()
+          one[0] == new Date(now).getFullYear() &&
+          one[1] == new Date(now).getMonth() + 1 &&
+          one[2] == new Date(now).getDate()
         ) {
           className += 'on'
         }
@@ -130,7 +138,7 @@ class calendar extends Component {
       month: month,
       // datetop: year + '年' + month + '月' 
     },()=>{
-      let val = year+ '-' + month +'-'+ "1"
+      let val = year+ '-' + month 
     console.log('2', val)
     console.log('3', this.state)
     this.initData(val);
@@ -147,7 +155,7 @@ class calendar extends Component {
       month: month,
       datetop: year + '年' + month + '月'
     },()=>{
-      let val = year+ '-' + month +'-'+ "1"
+      let val = year+ '-' + month 
     console.log('2', val)
     console.log('3', this.state)
     this.initData(val);
