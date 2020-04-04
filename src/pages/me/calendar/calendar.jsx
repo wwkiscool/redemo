@@ -23,7 +23,7 @@ class calendar extends Component {
     }
   }
   componentDidMount () {
-    this.initData();
+    this.initData()
     this.timer = setInterval(()=> this.tick(), 1000)
   }
   componentWillUnmount () {
@@ -106,7 +106,10 @@ class calendar extends Component {
       day:day,
       datetop: datetop,
       datelist: datelist
+    },()=>{
+      console.log(this.state.datelist)
     })
+    
   }
   goBack = () => {
     this.props.history.push("/");

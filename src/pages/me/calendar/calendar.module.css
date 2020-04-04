@@ -53,13 +53,13 @@
   padding: 25px 0;
   box-sizing: border-box;
   overflow: hidden;
-  display: flex;
+  /* display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
 }
 .everyDate {
   color: #333333;
-  width: 14%;
+  /* width: 14%; */
   /* float: left; */
   /* padding: 20px 0px; */
   box-sizing: border-box;
@@ -69,6 +69,32 @@
   justify-content: center;
   align-items: center;
   overflow: hidden;
+}
+.on {
+  color: #333333;
+            width: 14%;
+            float: left;
+            padding: 20px 0px;
+            box-sizing: border-box;
+            color: #484848;
+            font-size: 28px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+}
+.disabled{
+  color: #333333;
+            width: 14%;
+            float: left;
+            padding: 20px 0px;
+            box-sizing: border-box;
+            color: #484848;
+            font-size: 28px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
 }
 .disabled .circle {
   border-radius: 50%;

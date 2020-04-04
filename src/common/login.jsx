@@ -36,7 +36,7 @@ class login extends Component {
     } else {
       let response = await axios.post('/api/users/selectOne', {
         userCode: this.state.userId,
-        password: this.state.password
+        passWord: this.state.password
       })
       console.log('1', response)
       let code = response.data.code;
