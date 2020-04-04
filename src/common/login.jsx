@@ -34,7 +34,7 @@ class login extends Component {
       let message = '请输入账号或密码'
       this.showModal(message);
     } else {
-      let response = await axios.post('/api/users/selectOne', {
+      let response = await axios.post('api/users/selectOne', {
         userCode: this.state.userId,
         passWord: this.state.password
       })
