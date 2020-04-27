@@ -43,7 +43,7 @@ class login extends Component {
       if (code === '200') {
         // history.push('/me/calendar');
         // hash.push('/me/calendar')
-        this.props.history.push("/me/calendar");
+        this.props.history.push("/home");
       }
     }
   }
@@ -126,7 +126,9 @@ class login extends Component {
 }
 
 const loginStyle = {
-  wrapper: { height: '100%' },
+  wrapper: { height: '100%',
+
+  },
   bac: {
     background: `url('${backUrl}') no-repeat`,
     backgroundSize: 'cover',

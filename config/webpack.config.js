@@ -28,15 +28,8 @@ const typescriptFormatter = require('react-dev-utils/typescriptFormatter');
 // const eslint = require('eslint');
 
 const postcssNormalize = require('postcss-normalize');
-
 // vw适配引入
-const postcssAspectRatioMini = require('postcss-aspect-ratio-mini');
-const postcssPxToViewport = require('postcss-px-to-viewport');
-const postcssWriteSvg = require('postcss-write-svg');
-const postcssCssnext = require('postcss-cssnext');
-const postcssPresetEnv = require('postcss-preset-env');
-const postcssViewportUnits = require('postcss-viewport-units');
-const cssnano = require('cssnano');
+
 
 
 
@@ -111,42 +104,13 @@ module.exports = function (webpackEnv) {
           plugins: () => [
             require('postcss-flexbugs-fixes'),
             require('postcss-preset-env')({
-              autoprefixer: {
-                flexbox: 'no-2009',
+              autoprefixer:{
+                flexbox: 'no-2009'
               },
-              stage: 3,
+              stage :3
             }),
-            // Adds PostCSS Normalize as the reset css with default options,
-            // so that it honors browserslist config in package.json
-            // which in turn let's users customize the target behavior as per their needs.
             postcssNormalize(),
-            // 添加vw配置 start
-            postcssAspectRatioMini({}),
-            postcssPxToViewport({
-              viewportWidth: 750, // (Number) The width of the viewport.
-              viewportHeight: 1334, // (Number) The height of the viewport.
-              unitPrecision: 3, // (Number) The decimal numbers to allow the REM units to grow to.
-              viewportUnit: 'vw', // (String) Expected units.
-              selectorBlackList: ['.ignore', '.hairlines', '.list-row-bottom-line', '.list-row-top-line'], // (Array) The selectors to ignore and leave as px.
-              minPixelValue: 1, // (Number) Set the minimum pixel value to replace.
-              mediaQuery: false, // (Boolean) Allow px to be converted in media queries.
-              exclude: /(\/|\\)(node_modules)(\/|\\)/
-            }),
-            postcssWriteSvg({
-              utf8: false
-            }),
-            postcssPresetEnv({}),
-            // postcssViewportUnits({
-            //  filterRule: rule => rule.selector.indexOf('::after') === -1 && rule.selector.indexOf('::before') === -1 && rule.selector.indexOf(':after') === -1 && rule.selector.indexOf(':before') === -1
-            // }),
-            postcssViewportUnits({}),
-            cssnano({
-              "cssnano-preset-advanced": {
-                zindex: false,
-                autoprefixer: false
-              },
-            })
-            // 添加vw配置 end
+            // px2rem({remUnit: 75})
           ],
           sourceMap: isEnvProduction && shouldUseSourceMap,
         },
