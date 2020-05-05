@@ -29,7 +29,12 @@ const typescriptFormatter = require('react-dev-utils/typescriptFormatter');
 
 const postcssNormalize = require('postcss-normalize');
 // vw适配引入
-
+const postcssAspectRatioMini = require('postcss-aspect-ratio-mini');
+const postcssPxToViewport = require('postcss-px-to-viewport');
+const postcssWriteSvg = require('postcss-write-svg');
+const postcssPresetEnv = require('postcss-preset-env');
+const postcssViewportUnits = require('postcss-viewport-units');
+const cssnano = require('cssnano');
 
 
 
@@ -108,6 +113,33 @@ module.exports = function (webpackEnv) {
                 flexbox: 'no-2009'
               },
               stage :3
+            }),
+            postcssAspectRatioMini({}),
+            postcssPxToViewport({
+                viewportWidth: 750, // (Number) The width of the viewport.
+                viewportHeight: 1334, // (Number) The height of the viewport.
+                unitPrecision: 3, // (Number) The decimal numbers to allow the REM units to grow to.
+                viewportUnit: 'vw', // (String) Expected units.
+                selectorBlackList: ['.ignore', '.hairlines', '.list-row-bottom-line', '.list-row-top-line'], // (Array) The selectors to ignore and leave as px.
+                minPixelValue: 1, // (Number) Set the minimum pixel value to replace.
+                mediaQuery: false, // (Boolean) Allow px to be converted in media queries.
+                exclude: /(\/|\\)(node_modules)(\/|\\)/
+            }),
+            postcssWriteSvg({
+                utf8: false
+            }),
+            postcssPresetEnv({}),
+            // postcssViewportUnits({
+            //  filterRule: rule => rule.selector.indexOf('::after') === -1 && rule.selector.indexOf('::before') === -1 && rule.selector.indexOf(':after') === -1 && rule.selector.indexOf(':before') === -1
+            // }),
+            postcssViewportUnits({
+              filterRule: rule => rule.selector.includes('::after') && rule.selector.includes('::before') && rule.selector.includes(':after') && rule.selector.includes(':before')
+            }),
+            cssnano({
+                "cssnano-preset-advanced": {
+                    zindex: false,
+                    autoprefixer: false
+                },
             }),
             postcssNormalize(),
             // px2rem({remUnit: 75})
@@ -280,7 +312,7 @@ module.exports = function (webpackEnv) {
       // We placed these paths second because we want `node_modules` to "win"
       // if there are any conflicts. This matches Node resolution mechanism.
       // https://github.com/facebook/create-react-app/issues/253
-      modules: ['node_modules', paths.appNodeModules].concat(
+      modules: ['node_modules', paths.appNodeModules,path.resolve(__dirname, 'src')].concat(
         modules.additionalModulePaths || []
       ),
       // These are the reasonable defaults supported by the Node ecosystem.

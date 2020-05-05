@@ -65,7 +65,7 @@ class register extends Component {
           message: '注册成功,恭喜你可以开始了 gogo'
         })
       } else {
-        if (response.data.err.sqlState == '23000'){
+        if (response.data.err.sqlState === '23000'){
           this.setState({
             visible: true,
             riskCodeDup:true,

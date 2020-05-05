@@ -1,0 +1,52 @@
+.imgWrapper {
+  width: 30px;
+  height: 30px;
+  border-radius:15px;
+  background:#f8f8f8;
+  display: flex;
+  justify-content:center;
+  align-items:'center'
+}
+.channelWrap{
+  width:100%;
+    height: 60px;
+    overflow-x:auto;
+    overflow-y:hidden;
+    background:#fff;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 0 10px;
+    white-space: nowrap;
+    -ms-overflow-style: none; /*IE10+*/
+    color:#868585;
+}
+.channelWrap::-webkit-scrollbar{
+  display:none;
+}
+.checkedTab{
+  transition: .1s;
+  border-bottom: 5px solid red;
+}
+.inputStyl{
+  border: none; 
+  flex: .8; 
+  text-indent: 1em; 
+  border-radius: 20px; 
+  overflow: hidden; 
+  height: 50px; 
+  background: #f8f8f8 
+}
+.wrap{
+  padding-top: 150px
+}
+.channel{
+ width: 100%;
+ position:fixed;
+ top:90px;
+ z-index:100 
+}
+.header{
+  padding: 20px 0
+}

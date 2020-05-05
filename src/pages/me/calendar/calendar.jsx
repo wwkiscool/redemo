@@ -46,7 +46,7 @@ class calendar extends Component {
     let day = this.state.day || new Date().getDate();
     let datetop = year + '年' + month + '月'
     let totalNum = this.dayInMonth(year,month);
-    if(month == 2){
+    if(month === 2){
       if(year % 100 ===0 || year % 400 === 0 || year % 4 === 0){
         day = 29
       } else {
@@ -77,9 +77,9 @@ class calendar extends Component {
         let now = moment(dateTemp).format('YYYY-MM-DD');
         let className = ''
         if (
-          one[0] == new Date(now).getFullYear() &&
-          one[1] == new Date(now).getMonth() + 1 &&
-          one[2] == new Date(now).getDate()
+          one[0] === new Date(now).getFullYear() &&
+          one[1] === new Date(now).getMonth() + 1 &&
+          one[2] === new Date(now).getDate()
         ) {
           className += 'on'
         }

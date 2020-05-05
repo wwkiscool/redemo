@@ -1,6 +1,6 @@
 import React from 'react';
 // import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Login from '../common/login.jsx'
 import Register from '../common/register.jsx'
 import Calendar from '../pages/me/calendar/calendar.jsx'
