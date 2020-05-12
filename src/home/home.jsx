@@ -31,13 +31,13 @@ class home extends Component {
       )
     } else if (tabType === 'Ni') {
       return (
-        <div>
+        <div style={{ zIndex: 101, background: '#f8f8f8', position: "relative" }}>
           123
         </div>
       )
     } else if (tabType === 'Wo') {
       return (
-        <div>
+        <div style={{ zIndex: 101, background: '#f8f8f8', position: "relative" }}>
           <Wo></Wo>
         </div>
       )

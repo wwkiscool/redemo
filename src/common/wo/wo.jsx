@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import styles from './wo.module.css'
+import styles from './wo.module.css';
+import {List} from 'antd-mobile'
 
 import wrapperUrl from '../../assets/login/first-back.png'
 
@@ -42,8 +43,24 @@ export default class wo extends Component {
             </div>
           </div>
         </div>
-        <div>
-          
+        <div style={{background:'#fff',display:'flex',justifyContent:"space-between",padding:20}}>
+          <div>
+            小游戏
+          </div>
+          <div>
+            我的相册
+          </div>
+          <div>
+            打卡
+          </div>
+          <div>
+            其他
+          </div>
+        </div>
+        <div style={{margin:"10px 0"}}>
+          <List.Item
+            arrow={'horizontal'}
+          ><div style={{color:'#ccc'}}>关于我们</div></List.Item>
         </div>
       </div>
     );
