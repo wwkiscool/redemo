@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 import { TabBar } from 'antd-mobile';
+import QueueAnim from 'rc-queue-anim'; // 动画
+import {Link} from 'react-router-dom';
+import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
+import './home.scss';
 
-import Ta from './../common/ta/ta'
-import Wo from './../common/wo/wo'
+import DIYFooter from '../common/footer/footer'
 
 import you from '../assets/hometab/ni.png'
 import youed from '../assets/hometab/niSelected.png'
@@ -22,121 +26,12 @@ class home extends Component {
       selectedTab: 'woTab'
     }
   }
-  renderContent(tabType) {
-    if (tabType === 'Ta') {
-      return (
-        <div style={{ position: 'relative' }}>
-          <Ta></Ta>
-        </div>
-      )
-    } else if (tabType === 'Ni') {
-      return (
-        <div style={{ zIndex: 101, background: '#f8f8f8', position: "relative" }}>
-          123
-        </div>
-      )
-    } else if (tabType === 'Wo') {
-      return (
-        <div style={{ zIndex: 101, background: '#f8f8f8', position: "relative" }}>
-          <Wo></Wo>
-        </div>
-      )
-    } else {
-      return (
-        null
-      )
-    }
-  }
   render() {
     return (
-      <div style={{ height: '100vh' }}>
-          <TabBar
-            unselectedTintColor="#949494"
-            tintColor="#33A3F4"
-            barTintColor="white"
-            hidden={this.state.hidden}
-          >
-            <TabBar.Item
-              icon={<div style={{
-                width: '22px',
-                height: '22px',
-                background: `url(${ta}) center center /  21px 21px no-repeat`
-              }}
-              />
-              }
-              selectedIcon={<div style={{
-                width: '22px',
-                height: '22px',
-                background: `url(${taed}) center center /  21px 21px no-repeat`
-              }}
-              />}
-              title="Ta"
-              key="ta"
-              selected={this.state.selectedTab === 'taTab'}
-              onPress={() => {
-                this.setState({
-                  selectedTab: 'taTab',
-                });
-              }}
-            >
-              {this.renderContent('Ta')}
-              {/* {
-                this.props.history.push('/home/ta')
-              } */}
-            </TabBar.Item>
-            <TabBar.Item
-              icon={<div style={{
-                width: '22px',
-                height: '22px',
-                background: `url(${you}) center center /  21px 21px no-repeat`
-              }}
-              />
-              }
-              selectedIcon={<div style={{
-                width: '22px',
-                height: '22px',
-                background: `url(${youed}) center center /  21px 21px no-repeat`
-              }}
-              />}
-              title="你"
-              key="ni"
-              selected={this.state.selectedTab === 'niTab'}
-              onPress={() => {
-                this.setState({
-                  selectedTab: 'niTab',
-                });
-              }}
-            >
-              {this.renderContent('Ni')}
-            </TabBar.Item>
-            <TabBar.Item
-              icon={<div style={{
-                width: '22px',
-                height: '22px',
-                background: `url(${wo}) center center /  21px 21px no-repeat`
-              }}
-              />
-              }
-              selectedIcon={<div style={{
-                width: '22px',
-                height: '22px',
-                background: `url(${woed}) center center /  21px 21px no-repeat`
-              }}
-              />}
-              title="我"
-              key="wo"
-              selected={this.state.selectedTab === 'woTab'}
-              onPress={() => {
-                this.setState({
-                  selectedTab: 'woTab',
-                });
-              }}
-            >
-              {this.renderContent('Wo')}
-            </TabBar.Item>
-
-
-          </TabBar>
+      <div className='home'>
+        <QueueAnim>
+          <DIYFooter></DIYFooter>
+        </QueueAnim>
       </div>
     );
   }

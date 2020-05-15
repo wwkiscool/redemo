@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import './common/css/global.css'
-import App from './App';
+import {Provider} from 'react-redux'
+import {AppContainer} from 'react-hot-loader'
+import './common/css/base.scss'
+import Route from './router';
+import store from './store'
 import * as serviceWorker from './serviceWorker';
 
 // import('vconsole').then(vconsole => {
@@ -10,7 +12,18 @@ import * as serviceWorker from './serviceWorker';
 //   new vconsole.default();
 // })
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const render = Component =>{
+  ReactDOM.render(
+    <Provider store={store}>
+      <AppContainer>
+        <Component/>
+      </AppContainer>
+    </Provider>,
+    document.getElementById('root')
+  )
+}
+
+render(Route)
 
 
 

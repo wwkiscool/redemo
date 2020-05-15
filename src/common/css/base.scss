@@ -1,0 +1,48 @@
+*{
+  padding: 0 ;
+  margin:0;
+  list-style: none;
+  font-style: normal;
+  /*防止点击闪烁*/
+  -webkit-tap-highlight-color: transparent;
+  // 缩放网页，文字大小不变
+  -webkit-text-size-adjust:none;
+  box-sizing:border-box;
+  font-weight: normal;
+  &:hover{
+    outline: none
+  }
+}
+// 设置iconfont 标签font-family
+[class^="icon-"],[class*='icon-'] {
+  font-family: "iconfont";
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+}
+// 定义滚动条高宽以及背景 
+::-webkit-scrollbar {
+  width:0;
+  height:0;
+  background: #f5f5f5;
+}
+// 去除虚线
+input:focus,select:focus,textarea:focus,button:focus{
+  outline: none;
+}
+input {
+  border: none
+}
+html,body{
+  background-color:#f5f5f5;
+  height:100%;
+  width: 100%;
+}
+// input[type="button"], input[type='submit'], input[type='search'], input[type='reset']{
+//   -webkit-appearance: none;
+// }
+a{
+  text-decoration: none;
+  // ios 禁止页面在新窗口打卡
+  -webkit-touch-callout:none
+}

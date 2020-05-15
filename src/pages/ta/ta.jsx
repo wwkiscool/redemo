@@ -5,7 +5,7 @@ import { Input } from 'antd'
 import wo from './../../assets/dog/you.png'
 import styleS from './ta.module.css'
 
-import TaItem from './taItem.jsx'
+// import TaItem from './taItem.jsx'
 import ChannelContent from './channelContent.jsx'
 
 
@@ -70,15 +70,15 @@ class ta extends Component {
       null
     )
   }
-  channelContent = () => {
+  channelContent () {
     return (
       <ChannelContent></ChannelContent>
     )
   }
   render() {
     return (
-      <div>
-        <div className={styleS.wrap}>
+      <div>123
+        {/* <div className={styleS.wrap}>
         <div className={styleS.header} style={styles.header}>
           <div className={styleS.imgWrapper}>
             <img src={wo} alt="wo in ta" style={styles.headerImg} />
@@ -90,7 +90,7 @@ class ta extends Component {
             onChange={this.inputChange}
           >
           </Input>
-          {/* <SearchBar placeholder="Search" style={{ border: 'none', flex: .8, textIndent: "1em", borderRadius: 20, overflow: 'hidden', height: 30, background: "#f8f8f8" }}  /> */}
+          
           <div>
             wwk
           </div>
@@ -113,7 +113,7 @@ class ta extends Component {
         </div>
         </div>
         {this.tabContent(this.state.checkTabChannel)}
-        {this.channelContent()}
+        {this.channelContent()} */}
       </div>
     )
   }
