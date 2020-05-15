@@ -28,7 +28,7 @@ export default class DIYFooter extends Component {
             <div>you</div>
           </div>
         </NavLink>
-        <NavLink className='itemLink' to='/me'>
+        <NavLink className='itemLink' to='/home'>
           <div className='wrapimg'>
             <img className='tabimg' src={wo} alt="wo" />
             <div>wo</div>

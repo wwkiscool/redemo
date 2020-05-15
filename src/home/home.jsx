@@ -5,17 +5,10 @@ import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import './home.scss';
+import Me from '../pages/me/me'
 
 import DIYFooter from '../common/footer/footer'
 
-import you from '../assets/hometab/ni.png'
-import youed from '../assets/hometab/niSelected.png'
-
-import wo from '../assets/hometab/wo.png'
-import woed from '../assets/hometab/woSelected.png'
-
-import ta from '../assets/hometab/ta.png'
-import taed from '../assets/hometab/taSelected.png'
 
 class home extends Component {
   constructor(props) {
@@ -30,6 +23,7 @@ class home extends Component {
     return (
       <div className='home'>
         <QueueAnim>
+          <Me></Me>
           <DIYFooter></DIYFooter>
         </QueueAnim>
       </div>
