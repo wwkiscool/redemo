@@ -16,6 +16,7 @@ export default class DIYFooter extends Component {
   render() {
     return (
       <div className='footer-container'>
+        <div className='wrapper'>
         <NavLink className='itemLink' to='/ta'>
           <div className='wrapimg'>
             <img className='tabimg' src={ta} alt="ta" />
@@ -34,7 +35,7 @@ export default class DIYFooter extends Component {
             <div>wo</div>
           </div>
         </NavLink>
-
+        </div>
       </div>
     )
   }

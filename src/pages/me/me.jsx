@@ -8,6 +8,7 @@ import right from '../../assets/me/right.png'
 import defaultAvatar from '../../assets/ta/avatar.jpg'
 import axios from '../../utils/axiosUtils'
 import HeaderComponent from '../../common/header/header'
+import Tab from '../../common/tab/tab'
 
 export default class me extends Component {
   constructor(props) {
@@ -15,7 +16,34 @@ export default class me extends Component {
     this.state = {
       avatar: '',
       name: 'wwww',
-      info: '123'
+      info: '123',
+      tabData:[
+        {
+          name:'游戏',
+          id:1,
+          activity: true
+        },
+        {
+          name:'电影',
+          id:2,
+          activity: false
+        },
+        {
+          name:'娱乐',
+          id:3,
+          activity: false
+        },
+        {
+          name:'小说',
+          id:4,
+          activity: false
+        },
+        {
+          name:'情感',
+          id:5,
+          activity: false
+        },
+      ]
     }
   }
   componentDidMount() {
@@ -51,8 +79,9 @@ export default class me extends Component {
       //     </div>
       //   </div>
       // </div>
-      <div>
-        <HeaderComponent title="我的"></HeaderComponent>
+      <div  className="main-viewport">
+        <HeaderComponent title="我的" backText="返回"></HeaderComponent>
+        <Tab tabData={this.state.tabData}></Tab>
       </div>
     )
   }

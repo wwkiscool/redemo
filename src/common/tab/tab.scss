@@ -1,0 +1,10 @@
+@import "../css/mixin.scss";
+
+.tab_wrapper{
+  @include flex(flex-start);
+  height: 70px;
+  padding: 10px;
+  .every_tab{
+    padding: 0 10px;
+  }
+}

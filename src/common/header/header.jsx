@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './header.scss';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import wwk from '../../utils/wwk/index.js'
 
 export default class DIYHeader extends Component {
   /**
@@ -17,25 +18,29 @@ export default class DIYHeader extends Component {
   //   edit: PropTypes.func,
   //   userInfo: PropTypes.object.isRequired
   // }
+  componentDidMount(){
+  }
   render() {
-    let backText = '返回',
+    let backText = '',
       title = '',
       rightContent;
-      
-      for (let item in this.props){
-        if (this.props.backText && item == 'backText') {
-          backText = this.props[item]
-        } else if (this.props.title && item == 'title') {
-          title = this.props[item]
-        } else if (this.props.rightContent && item == 'rightContent') {
-          rightContent = this.props[item]
-        } else {
 
-        }
+    for (let item in this.props) {
+      if (this.props.backText && item == 'backText') {
+        backText = this.props[item]
+      } else if (this.props.title && item == 'title') {
+        title = this.props[item]
+      } else if (this.props.rightContent && item == 'rightContent') {
+        rightContent = this.props[item]
+      } else {
+
       }
+    }
     return (
       <header className='header-container'>
-        {title}
+        {backText ? <div className="left"><img className="back-img" src={require("../../assets/common/back_black_white.png")} alt="back" />{backText}</div>
+          : <div><img className="back-img" src={require("../../assets/common/back_black_white.png")} alt="back" /></div>}
+        <div className='title'>{title}</div>
       </header>
     )
   }

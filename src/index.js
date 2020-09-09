@@ -5,18 +5,22 @@ import {AppContainer} from 'react-hot-loader'
 import './common/css/base.scss'
 import Route from './router';
 import store from './store'
+import wwk from './utils/wwk/index'
 import * as serviceWorker from './serviceWorker';
 
-// import('vconsole').then(vconsole => {
-//   // eslint-disable-next-line new-cap,no-new
-//   new vconsole.default();
-// })
-
+import('vconsole').then(vconsole => {
+  // eslint-disable-next-line new-cap,no-new
+  if(wwk.type)  new vconsole.default();
+})
+console.log(wwk)
 const render = Component =>{
   ReactDOM.render(
     <Provider store={store}>
       <AppContainer>
-        <Component/>
+        <div className={wwk.os!='iOS'?'general-device': wwk.type?'ios-support-safe':'ios-unsupport-safe'}>
+         <Component />
+        </div>
+        
       </AppContainer>
     </Provider>,
     document.getElementById('root')

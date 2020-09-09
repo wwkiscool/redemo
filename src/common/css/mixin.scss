@@ -4,6 +4,36 @@ $fc:#fff;
 $common-left: 0.2rem;
 $common-right: 0.6rem;
 
+@mixin padding-top-with-ipxsafe($top) {
+  padding-top: constant(safe-area-inset-top);
+  // padding-top: 'calc(env(safe-area-inset-top) + %s)'% $top;
+}
+
+@mixin margin-top-with-ipxsafe($top) {
+  margin-top: 'calc(constant(safe-area-inset-top) + %s)'% $top;
+  margin-top: 'calc(env(safe-area-inset-top) + %s)'% $top;
+}
+
+@mixin padding-bottom-with-ipxsafe($bottom) {
+  padding-bottom: 'calc(constant(safe-area-inset-bottom) + %s)'% $bottom;
+  padding-bottom: 'calc(env(safe-area-inset-bottom) + %s)'% $bottom;
+}
+
+@mixin margin-bottom-with-ipxsafe($bottom) {
+  margin-bottom: 'calc(constant(safe-area-inset-bottom) + %s)'% $bottom;
+  margin-bottom: 'calc(env(safe-area-inset-bottom) + %s)'% $bottom;
+}
+
+@mixin top-with-ipxsafe($top) {
+  top: 'calc(constant(safe-area-inset-top) + %s)'% $top;
+  top: 'calc(env(safe-area-inset-top) + %s)'% $top;
+}
+
+@mixin bottom-with-ipxsafe($bottom) {
+  bottom: 'calc(constant(safe-area-inset-bottom) + %s)'% $bottom;
+  bottom: 'calc(env(safe-area-inset-bottom) + %s)'% $bottom;
+}
+
 
 
 // 元素长宽
@@ -13,7 +43,7 @@ $common-right: 0.6rem;
 }
 
 // 字体颜色,大小, 水平布局
-@mixin font($size, $color: #333, $text-align: left){
+@mixin font($size, $color: #333, $text-align: left) {
   font-size: $size;
   color: $color;
   text-align: $text-align;

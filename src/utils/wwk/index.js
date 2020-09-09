@@ -44,105 +44,23 @@ const OSChecker = {
   }
 }
 
-const ClientChecker = {
-  ...wwk.OS,
-  _WebApp: function () {
-    // 安卓APP 和 IOS APP中增加了自定义UA 用于识别当前的版本
-    // 其中安卓UA为 SINO_ANDROID_APP/1.0 1.0为版本号
-    // IOS UA为 SINO_IOS_APP/1.0
-    // 这个地方需要修改一下
-    let result = null;
-    let match = navigator.userAgent.match(/SINO_([\w]+)_APP\/([\d.]+)/);
-    if (match) {
-      result = {};
-      result.OS = match[1] === 'IOS' ? this.iOS : this.Android;
-      result.type = this.WebApp;
-      // result.version = match[2]; 
-      // 获取到的UA是1.0 由于手机是13.0所以先调试 头部padding
-      result.version = '13'
-    }
+wwk.os = OSChecker.is();
 
-    return result;
-  },
 
-  _WeChat: function () {
-    let result = null;
-    let match = navigator.userAgent.match(/MicroMessenger\/([\w\d.]+)/);
-    if (match) {
-      result = {};
-      result.OS = OSChecker.is();
-      result.type = this.WeChat;
-      result.version = match[1];
-    }
-    return result;
-  },
+function judgeBigScreen() {  //，这里根据返回值 true 或false ,返回true的话 则为全面屏
+  var result = false;
+  var rate = window.screen.height / window.screen.width;
+  var limit =  window.screen.height == window.screen.availHeight ? 1.8 : 1.65; // 临界判断值
 
-  _Browser: function () {
-    let result = {};
-    result.OS = OSChecker.is();
-    result.type = this.Browser;
-    result.version = '0';
-    return result;
-  },
-
-  info: function () {
-    return this._WebApp() || this._WeChat() || this._Browser();
+  // window.screen.height为屏幕高度
+  //  window.screen.availHeight 为浏览器 可用高度
+  if (rate > limit) {
+      result = true;
   }
+  return result;
 }
 
-/**
- * 包含三个属性
- * {
- *   OS: 系统版本
- *   type: 客户端类型包括 Browser WebApp WeChat
- *   version: 从UA字符串中取得的版本 如果type是Browser 则恒为0
- * }
- */
-wwk.client = ClientChecker.info();
-
-/**
- * 判断当前环境是否是APP
- */
-wwk.isApp = function () {
-  return wwk.client.type === OSChecker.WebApp;
-};
-/**
- * 判断是否为微信环境
- */
-wwk.isWeChat = function () {
-  return wwk.client.type === OSChecker.WeChat;
-};
-/**
- * 判断当前是否为android，无论时运行在浏览器还是app 只要是android设备该方法返回true
- * @returns {boolean}
- */
-wwk.isAndroid = function () {
-  return wwk.client.OS === OSChecker.Android;
-}
-/**
- * 判断当前是否为Android APP，是android设备并且运行在app中
- */
-wwk.isAndroidApp = function () {
-  return wwk.isApp() && wwk.isAndroid();
-};
-/**
- * 判断当前是否为ios，无论运行在浏览器还是app 只要是ios设备该方法均为true
- * @returns {boolean}
- */
-wwk.isIOS = function () {
-  return wwk.client.OS === OSChecker.iOS;
-}
-/**
- * 判断当前是否为iOS APP 该方法与isIOS的区别在于 只有当前设备是ios设备并且运行在cordova app中时才为true
- */
-wwk.isIOSApp = function () {
-  return wwk.isApp() && wwk.isIOS();
-};
-
-wwk.isPC = function () {
-  return wwk.client.type === OSChecker.Browser && document.documentElement.clientWidth >= 800;
-};
-
+wwk.type = judgeBigScreen()
 /**
  * 获取html页面连接中的传参
  * @returns {{}} 返回对象

@@ -46,3 +46,15 @@ a{
   // ios 禁止页面在新窗口打卡
   -webkit-touch-callout:none
 }
+
+.general-device .main-viewport {
+  padding-top: 90px;
+}
+// 对于不支持safe区域的版本 增加padding-top
+.ios-unsupport-safe .main-viewport {
+  padding-top: 130px;
+}
+
+.ios-support-safe .main-viewport {
+  padding-top :env(safe-area-inset-top) + 20px
+}
