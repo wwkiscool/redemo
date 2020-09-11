@@ -59,8 +59,7 @@ function judgeBigScreen() {  //，这里根据返回值 true 或false ,返回tru
   }
   return result;
 }
-
-wwk.type = judgeBigScreen()
+wwk.type =wwk.os=='iOS'&&judgeBigScreen()
 /**
  * 获取html页面连接中的传参
  * @returns {{}} 返回对象

@@ -79,7 +79,7 @@ export default class me extends Component {
       //     </div>
       //   </div>
       // </div>
-      <div  className="main-viewport">
+      <div>
         <HeaderComponent title="我的" backText="返回"></HeaderComponent>
         <Tab tabData={this.state.tabData}></Tab>
       </div>

@@ -1,10 +1,35 @@
 @import "../css/mixin.scss";
 
-.tab_wrapper{
+.tab_wrapper {
   @include flex(flex-start);
-  height: 70px;
-  padding: 10px;
-  .every_tab{
-    padding: 0 10px;
+  border-bottom: 1px solid rgba(188, 188, 188, .3);
+  overflow: hidden;
+  position: relative;
+  white-space: nowrap;
+  background: #c89191;
+  .tab_scroll {
+    // overflow-x: auto;
+
+    .every_tab {
+     
+      display: inline-block;
+    }
+
+    .active {
+      color: rgb(87, 87, 175)
+    }
+
+    .bottom_tab {
+      position: absolute;
+      bottom: 0px;
+      left: 0;
+      z-index: 1;
+      box-sizing: border-box;
+      height: 4px;
+      background-color: #1890ff;
+      transform-origin: 0 0;
+      transform: translate3d(0px, 0px, 0px);
+      transition: transform .3s cubic-bezier(.645, .045, .355, 1), width .2s cubic-bezier(.645, .045, .355, 1), left .3s cubic-bezier(.645, .045, .355, 1), -webkit-transform .3s cubic-bezier(.645, .045, .355, 1);
+    }
   }
 }

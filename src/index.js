@@ -7,10 +7,12 @@ import Route from './router';
 import store from './store'
 import wwk from './utils/wwk/index'
 import * as serviceWorker from './serviceWorker';
+import 'antd/dist/antd.css';
 
 import('vconsole').then(vconsole => {
   // eslint-disable-next-line new-cap,no-new
-  if(wwk.type)  new vconsole.default();
+  if(wwk.type) 
+   new vconsole.default();
 })
 console.log(wwk)
 const render = Component =>{
