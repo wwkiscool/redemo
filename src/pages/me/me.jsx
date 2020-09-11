@@ -9,6 +9,7 @@ import defaultAvatar from '../../assets/ta/avatar.jpg'
 import axios from '../../utils/axiosUtils'
 import HeaderComponent from '../../common/header/header'
 import Tab from '../../common/tab/tab'
+import SwiperComponent from '../../common/swiper/index'
 
 export default class me extends Component {
   constructor(props) {
@@ -43,6 +44,19 @@ export default class me extends Component {
           id:5,
           activity: false
         },
+      ],
+      swiperData:[
+        {
+          url:"",
+          id:1
+        },{
+          url:"",
+          id:2
+        },
+        {
+          url:"",
+          id:3
+        }
       ]
     }
   }
@@ -52,36 +66,10 @@ export default class me extends Component {
 
   render() {
     return (
-      // <div className='me-header'>
-      //   <div className='img-background'>
-      //     <div className='top-icon'>
-      //       <img src={left} alt="left" />
-      //       <img src={right} alt="right" />
-      //     </div>
-      //     <div className='avatar'>
-      //       <div className='left'>
-      //         <div className='headerimg' id='user-photo'>
-      //           <img src={this.state.avatar ? this.state.avatar : defaultAvatar} alt="avatar" />
-      //         </div>
-
-      //         <div className='perInfo'>
-      //           <div className='firstinfo'>
-      //             {this.state.name}
-      //           </div>
-      //           <div className='secondinfo'>
-      //             {this.state.info}
-      //           </div>
-      //         </div>
-      //       </div>
-      //       <div className='right'>
-      //         个人主页
-      //       </div>
-      //     </div>
-      //   </div>
-      // </div>
       <div>
         <HeaderComponent title="我的" backText="返回"></HeaderComponent>
         <Tab tabData={this.state.tabData}></Tab>
+        <SwiperComponent swiperData={this.state.swiperData}></SwiperComponent>
       </div>
     )
   }

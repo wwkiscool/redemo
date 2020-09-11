@@ -27,9 +27,18 @@
       box-sizing: border-box;
       height: 4px;
       background-color: #1890ff;
-      transform-origin: 0 0;
-      transform: translate3d(0px, 0px, 0px);
-      transition: transform .3s cubic-bezier(.645, .045, .355, 1), width .2s cubic-bezier(.645, .045, .355, 1), left .3s cubic-bezier(.645, .045, .355, 1), -webkit-transform .3s cubic-bezier(.645, .045, .355, 1);
+      transition: transform .3s cubic-bezier(.645, .045, .355, 1), width .3s cubic-bezier(.645, .045, .355, 1), left .3s cubic-bezier(.645, .045, .355, 1);
+      animation: tabBottom .3s;
+      transition: all .3 ease-in-out;
+      transform:perspective(800px) rotateY(0deg);
     }
   }
+}
+
+@keyframes tabBottom {
+  0%   {width: 100%;}
+25%  {width: 175%;}
+50%  {width: 200%;}
+75%  {width: 170%;}
+100% {width: 100%;}
 }
