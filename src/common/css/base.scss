@@ -61,12 +61,16 @@ a {
 
 .general-device {
   padding-top: 130px;
+  height: 100%;
+  position: relative;
 }
 
 // 对于不支持safe区域的版本 增加padding-top
 .ios-unsupport-safe,
 .general-device {
   padding-top: 130px;
+  height: 100%;
+  position: relative;
 }
 
 .ios-unsupport-safe .header-container,
@@ -92,4 +96,8 @@ a {
 
 .ios-support-safe .header-container .left {
   top: calc(env(safe-area-inset-top) + 0px)
+}
+
+#root {
+  height: 100vh;
 }

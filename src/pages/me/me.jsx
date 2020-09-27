@@ -18,44 +18,44 @@ export default class me extends Component {
       avatar: '',
       name: 'wwww',
       info: '123',
-      tabData:[
+      tabData: [
         {
-          name:'游戏',
-          id:1,
+          name: '游戏',
+          id: 1,
           activity: true
         },
         {
-          name:'电影',
-          id:2,
+          name: '电影',
+          id: 2,
           activity: false
         },
         {
-          name:'娱乐',
-          id:3,
+          name: '娱乐',
+          id: 3,
           activity: false
         },
         {
-          name:'小说',
-          id:4,
+          name: '小说',
+          id: 4,
           activity: false
         },
         {
-          name:'情感',
-          id:5,
+          name: '情感',
+          id: 5,
           activity: false
         },
       ],
-      swiperData:[
+      swiperData: [
         {
-          url:"",
-          id:1
-        },{
-          url:"",
-          id:2
+          url: "https://rccp-dfs.oss-cn-beijing.aliyuncs.com/carousel/pic/云资料.jpg",
+          id: 1
+        }, {
+          url: "https://rccp-dfs.oss-cn-beijing.aliyuncs.com/carousel/pic/考勤打卡.jpg",
+          id: 2
         },
         {
-          url:"",
-          id:3
+          url: "https://rccp-dfs.oss-cn-beijing.aliyuncs.com/carousel/pic/人才市场.jpg",
+          id: 3
         }
       ]
     }
@@ -66,7 +66,7 @@ export default class me extends Component {
 
   render() {
     return (
-      <div>
+      <div style={{ position: 'relative' }}>
         <HeaderComponent title="我的" backText="返回"></HeaderComponent>
         <Tab tabData={this.state.tabData}></Tab>
         <SwiperComponent swiperData={this.state.swiperData}></SwiperComponent>

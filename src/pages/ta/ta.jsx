@@ -77,8 +77,8 @@ class ta extends Component {
   }
   render() {
     return (
-      <div>123
-        {/* <div className={styleS.wrap}>
+      <div>
+        <div className={styleS.wrap}>
         <div className={styleS.header} style={styles.header}>
           <div className={styleS.imgWrapper}>
             <img src={wo} alt="wo in ta" style={styles.headerImg} />
@@ -113,7 +113,7 @@ class ta extends Component {
         </div>
         </div>
         {this.tabContent(this.state.checkTabChannel)}
-        {this.channelContent()} */}
+        {this.channelContent()}
       </div>
     )
   }

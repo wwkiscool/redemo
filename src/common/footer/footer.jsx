@@ -11,6 +11,7 @@ import woed from '../../assets/hometab/woSelected.png'
 
 import ta from '../../assets/hometab/ta.png'
 import taed from '../../assets/hometab/taSelected.png'
+// import Ta from '../../pages/ta/'
 
 export default class DIYFooter extends Component {
   render() {

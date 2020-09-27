@@ -1,0 +1,23 @@
+.swiper_wrapper {
+  white-space: nowrap;
+  overflow: hidden;
+  width: 90vw;
+  height: 340px;
+  margin: 20px auto;
+  position: relative;
+  border-radius: 20px;
+
+  .swiper_content {
+    width: 270vw;
+    position: absolute;
+    left: 0;
+    height: 340px;
+    transition: all 2s ease-in-out;
+
+    .swiper_img {
+      width: 90vw;
+      height: 100%;
+      float: left;
+    }
+  }
+}

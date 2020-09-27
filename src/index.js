@@ -11,10 +11,10 @@ import 'antd/dist/antd.css';
 
 import('vconsole').then(vconsole => {
   // eslint-disable-next-line new-cap,no-new
-  if(wwk.type) 
+  if(wwk.type)
    new vconsole.default();
 })
-console.log(wwk)
+
 const render = Component =>{
   ReactDOM.render(
     <Provider store={store}>

@@ -39,7 +39,7 @@ export default class DIYHeader extends Component {
     return (
       <header className='header-container'>
         {backText ? <div className="left"><img className="back-img" src={require("../../assets/common/back_black_white.png")} alt="back" />{backText}</div>
-          : <div><img className="back-img" src={require("../../assets/common/back_black_white.png")} alt="back" /></div>}
+          : <div className="left"><img className="back-img" src={require("../../assets/common/back_black_white.png")} alt="back" /></div>}
         <div className='title'>{title}</div>
       </header>
     )
